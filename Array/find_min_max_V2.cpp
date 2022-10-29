@@ -1,24 +1,23 @@
 #include<iostream>
 #include<stdlib.h>
-
 using namespace std;
 
-typedef struct MinMax{
+struct MinMax{
     int Min;
     int Max;
-} MINMAX;
+};
 
-MINMAX* min_max_array(int[], int);
+void min_max_array(int[], int, struct MinMax* M);
+
 int main(){
-    MINMAX* M;
-    int A[]= {1,4,69,-21,13,41,0};
-    M = min_max_array(A,7);
-    cout << M->Min << "\n" << M->Max;
+    struct MinMax M;
+    int A[]= {1,4,69,-21,13,41,0,100};
+    min_max_array(A,8,&M);
+    cout << M.Min << "\n" <<M.Max;
     return 0;
 }
 
-MINMAX* min_max_array(int arr[], int arr_len){
-        MINMAX* M = (struct MinMax*) malloc(sizeof(struct MinMax)); 
+void min_max_array(int arr[], int arr_len, struct MinMax* M){ 
         M->Min = arr[0];
         M->Max = arr[0];
         for (int i=1; i < arr_len;i++){
@@ -29,5 +28,4 @@ MINMAX* min_max_array(int arr[], int arr_len){
                 M->Min = arr[i];
             }
         }
-        return M;
 }
